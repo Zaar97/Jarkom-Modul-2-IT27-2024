@@ -11,6 +11,7 @@
   - [Topology](#topology)
   - [Network Configurations](#network-configurations)
   - [Prerequisite](#prerequisite)
+- [Soal 1](#soal-1)
 - [Soal 2](#soal-2)
 - [Soal 3](#soal-3)
 - [Soal 4](#soal-4)
@@ -33,28 +34,99 @@
 
 ## Topology
 **Topology No. 2**
+![image](https://github.com/Zaar97/arkom-Modul-2-IT27-2024/assets/128958228/007449aa-e092-4718-9105-e5a95d2e80cc)
 
 ## Network Configuration
-- **Router Erangel**
-  ```bash
-  auto eth0
-  iface eth0 inet dhcp
+- **Router**
+  - Erangel
+      ```bash
+    auto eth0
+    iface eth0 inet dhcp
 
-  auto eth1
-  iface eth1 inet static
+    auto eth1
+    iface eth1 inet static
         address 10.77.1.1
         netmask 255.255.255.0
 
-  auto eth2
-  iface eth2 inet static
+    auto eth2
+    iface eth2 inet static
         address 10.77.2.1
         netmask 255.255.255.0
 
-  auto eth3
-  iface eth3 inet static
+    auto eth3
+    iface eth3 inet static
         address 10.77.3.1
         netmask 255.255.255.0
   ```
+- **Web Server**
+  - Severny
+    ```bash
+    auto eth0
+    iface eth0 inet static
+        address 10.77.1.2
+        netmask 255.255.255.0
+        gateway 10.77.1.1
+      ```
+  - Lipovka
+    ```bash
+    auto eth0
+    iface eth0 inet static
+        address 10.77.1.3
+        netmask 255.255.255.0
+        gateway 10.77.1.1
+    ```
+    - Stalber
+    ```bash
+    auto eth0
+    iface eth0 inet static
+        address 10.77.1.4
+        netmask 255.255.255.0
+        gateway 10.77.1.1
+    ```
+- **Client**
+  - Apartment
+    ```bash
+    auto eth0
+    iface eth0 inet static
+ 	    address 10.77.2.2
+ 	    netmask 255.255.255.0
+ 	    gateway 10.77.2.1
+    ```
+    - Ruins
+    ```bash
+    auto eth0
+    iface eth0 inet static
+ 	    address 10.77.2.3
+ 	    netmask 255.255.255.0
+ 	    gateway 10.77.2.1
+    ```
+- **Load Balancer**
+  - Mylta
+    ```bash
+    auto eth0
+    iface eth0 inet static
+ 	    address 10.77.2.4
+ 	    netmask 255.255.255.0
+ 	    gateway 10.77.2.1
+    ```
+- **DNS**
+  - Slave Georgopol
+    ```bash
+    auto eth0
+    iface eth0 inet static
+ 	    address 10.77.2.5
+ 	    netmask 255.255.255.0
+ 	    gateway 10.77.2.1
+    ```
+  - Master Pochinki
+    ```bash
+          auto eth0
+    iface eth0 inet static
+ 	    address 10.77.3.2
+ 	    netmask 255.255.255.0
+ 	    gateway 10.77.3.1
+    ```
+
 ## Prerequisite
 
 ## Soal 2
