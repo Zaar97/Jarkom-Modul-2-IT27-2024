@@ -35,7 +35,26 @@
 **Topology No. 2**
 
 ## Network Configuration
+- **Router Erangel**
+  ```bash
+  auto eth0
+  iface eth0 inet dhcp
 
+  auto eth1
+  iface eth1 inet static
+        address 10.77.1.1
+        netmask 255.255.255.0
+
+  auto eth2
+  iface eth2 inet static
+        address 10.77.2.1
+        netmask 255.255.255.0
+
+  auto eth3
+  iface eth3 inet static
+        address 10.77.3.1
+        netmask 255.255.255.0
+  ```
 ## Prerequisite
 
 ## Soal 2
