@@ -66,7 +66,7 @@
         address 10.77.1.2
         netmask 255.255.255.0
         gateway 10.77.1.1
-      ```
+    ```
   - Lipovka
     ```bash
     auto eth0
@@ -92,7 +92,7 @@
  	    netmask 255.255.255.0
  	    gateway 10.77.2.1
     ```
-    - Ruins
+  - Ruins
     ```bash
     auto eth0
     iface eth0 inet static
@@ -126,6 +126,20 @@
  	    netmask 255.255.255.0
  	    gateway 10.77.3.1
     ```
+- **Notes of Config**
+  ```bash
+  Erangel : 10.77.1.1 (Switch 1)
+  Severny : 10.77.1.2
+  Lipovka : 10.77.1.3
+  Stalber : 10.77.1.4
+  Erangel : 10.77.2.1 (Switch 2)
+  Apartement : 10.77.2.2
+  Ruins : 10.77.2.3
+  Mylta : 10.77.2.4
+  Georgopol : 10.77.2.5
+  Erangel : 10.77.3.1
+  Pochinki : 10.77.3.2
+  ```
 
 ## Prerequisite
 
