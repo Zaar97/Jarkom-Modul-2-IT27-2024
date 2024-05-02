@@ -150,6 +150,10 @@ Sebelum memulai pengerjaan, langkah awal yang perlu dilakukan adalah melakukan s
 ```bash
 ping google.com -c 5
 ```
+
+### Result
+
+
 ## Soal 2
 
 ## Soal 3
