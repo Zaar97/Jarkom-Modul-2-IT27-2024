@@ -8,8 +8,9 @@
 ## List of Contents
 - Official Report
   - [List of Contents](#list-of-contents)
-  - Topology
-  - Network Configurations
+  - [Topology](#topology)
+  - [Network Configurations](#network-configurations)
+  - [Prerequisite](#prerequisite)
 - [Soal 2](#soal-2)
 - [Soal 3](#soal-3)
 - [Soal 4](#soal-4)
@@ -30,7 +31,11 @@
 - [Soal 19](#soal-19)
 - [Soal 20](#soal-20)
 
-## Soal 1
+## Topology
+
+## Network Configuration
+
+## Prerequisite
 
 ## Soal 2
 
