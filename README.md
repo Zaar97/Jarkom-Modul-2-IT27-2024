@@ -130,9 +130,9 @@
 - **Notes of Config**
   ```bash
   Erangel : 10.77.1.1 (Switch 1)
-  Severny : 10.77.1.2
-  Lipovka : 10.77.1.3
-  Stalber : 10.77.1.4
+  Lipovka : 10.77.1.2
+  Stalber : 10.77.1.3
+  Severny : 10.77.1.4
   Erangel : 10.77.2.1 (Switch 2)
   Apartement : 10.77.2.2
   Ruins : 10.77.2.3
@@ -189,7 +189,7 @@ Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
 echo 'zone "airdrop.it27.com" {
         type master;
         file "/etc/bind/jarkom/airdrop.it27.com";
-        allow-transfer { 192.173.3.5; }; // IP Stalber
+        allow-transfer { 10.77.1.3; }; // IP Stalber
 };' > /etc/bind/named.conf.local
 
 mkdir /etc/bind/jarkom
@@ -228,6 +228,54 @@ ping www.airdrop.it27.com -c 5
 
 ## Soal 3
 > Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.com yang mengarah ke Severny
+
+**Script**
+Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+***Pochinki***
+```bash
+echo 'zone "airdrop.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/airdrop.it27.com";
+        allow-transfer { 10.77.1.3; }; // IP Stalber
+};
+
+zone "redzone.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/redzone.it27.com";
+        allow-transfer { 10.77.1.4; }; // IP Severny
+};' > /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/redzone.it27.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     airdrop.it27.com. root.airdrop.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      redzone.it27.com.
+@       IN      A       10.77.3.2     ; IP Pochinki
+@       IN      A       10.77.1.4     ; IP Severny
+www     IN      CNAME   redzone.it27.com.' > /etc/bind/jarkom/redzone.it27.com
+
+service bind9 restart
+```
+
+***Severny***
+```bash
+echo nameserver 10.77.3.2 > /etc/resolv.conf
+ping redzone.it27.com -c 5
+ping www.redzone.it27.com -c 5
+```
+
+**Result**
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/0fafbec2-64c8-4187-a3c8-e135d5507cf6)
 
 ## Soal 4
 > Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi persenjataan dan suplai tersebut mengarah ke Mylta dan domain yang ingin digunakan adalah loot.xxxx.com dengan alias www.loot.xxxx.com
