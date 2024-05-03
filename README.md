@@ -253,7 +253,7 @@ echo '
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
-@       IN      SOA     airdrop.it27.com. root.airdrop.it27.com. (
+@       IN      SOA     redzone.it27.com. root.redzone.it27.com. (
                         2023101001      ; Serial
                          604800         ; Refresh
                           86400         ; Retry
@@ -338,6 +338,75 @@ Dapat dilakukakn dengan melakukan ping untuk setiap domain yang telah di buat se
 
 ## Soal 7
 > Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
+
+**Script**
+***Pochinki***
+Pada `DNS Master` diperlukan setup `also-notify` dan `allow-transfer` agar memberikan izin kepada IP yang dituju
+
+```bash
+echo 'zone "airdrop.it27.com" {
+        type master;
+        also-notify { 10.77.2.3; };
+        allow-transfer { 10.77.2.3; };
+        file "/etc/bind/main/airdrop.it27.com";
+};
+
+zone "redzone.it27.com" {
+        type master;
+        also-notify { 10.77.2.3; };
+        allow-transfer { 10.77.2.3; };
+        file "/etc/bind/main/aredzone.it27.com";
+};
+
+zone "loot.it27.com" {
+        type master;
+        also-notify { 10.77.2.3; };
+        allow-transfer { 10.77.2.3; };
+        file "/etc/bind/jarkom/loot.it27.com";
+};
+' > /etc/bind/named.conf.local
+
+service bind9 restart
+service bind9 stop
+```
+
+***Georgopol***
+```bash
+echo 'zone "airdrop.it27.com" {
+    type slave;
+    masters { 10.77.2.3; }; 
+    file "/var/lib/bind/airdrop.it27.com";
+};
+
+zone "redzone.it27.com" {
+    type slave;
+    masters { 10.77.2.3; }; 
+    file "/var/lib/bind/redzone.it27.com";
+};
+
+zone "loot.it27.com" {
+    type slave;
+    masters { 10.77.2.3; }; 
+    file "/var/lib/bind/loot.it27.com";
+};' >> /etc/bind/named.conf.local
+
+service bind9 restart
+```
+
+Jika sudah selesai, pengujian dapat dilakukan dengan melakukan ping pada domain yang telah dibuat
+```bash
+ping airdrop.it27.com -c 5
+ping redzone.it27.com -c 5
+ping loot.it27.com -c 5
+```
+
+Setelah itu, untuk membuktikan Slave berhasil atau tidak, perlu ditambahkan IP Georgopol pada /etc/resolv.conf didalam Node Client
+```bash
+echo nameserver 10.77.2.3 > /etc/resolv.conf
+```
+
+**Result**
+
 
 ## Soal 8
 > Kamu juga diperintahkan untuk membuat subdomain khusus melacak airdrop berisi peralatan medis dengan subdomain medkit.airdrop.xxxx.com yang mengarah ke Lipovka
