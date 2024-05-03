@@ -355,7 +355,7 @@ zone "redzone.it27.com" {
         type master;
         also-notify { 10.77.2.3; };
         allow-transfer { 10.77.2.3; };
-        file "/etc/bind/main/aredzone.it27.com";
+        file "/etc/bind/main/redzone.it27.com";
 };
 
 zone "loot.it27.com" {
@@ -363,8 +363,7 @@ zone "loot.it27.com" {
         also-notify { 10.77.2.3; };
         allow-transfer { 10.77.2.3; };
         file "/etc/bind/jarkom/loot.it27.com";
-};
-' > /etc/bind/named.conf.local
+};' > /etc/bind/named.conf.local
 
 service bind9 restart
 service bind9 stop
@@ -374,30 +373,23 @@ service bind9 stop
 ```bash
 echo 'zone "airdrop.it27.com" {
     type slave;
-    masters { 10.77.2.3; }; 
+    masters { 10.77.3.2; }; 
     file "/var/lib/bind/airdrop.it27.com";
 };
 
 zone "redzone.it27.com" {
     type slave;
-    masters { 10.77.2.3; }; 
+    masters { 10.77.3.2; }; 
     file "/var/lib/bind/redzone.it27.com";
 };
 
 zone "loot.it27.com" {
     type slave;
-    masters { 10.77.2.3; }; 
+    masters { 10.77.3.2; }; 
     file "/var/lib/bind/loot.it27.com";
 };' >> /etc/bind/named.conf.local
 
 service bind9 restart
-```
-
-Jika sudah selesai, pengujian dapat dilakukan dengan melakukan ping pada domain yang telah dibuat
-```bash
-ping airdrop.it27.com -c 5
-ping redzone.it27.com -c 5
-ping loot.it27.com -c 5
 ```
 
 Setelah itu, untuk membuktikan Slave berhasil atau tidak, perlu ditambahkan IP Georgopol pada /etc/resolv.conf didalam Node Client
@@ -405,7 +397,28 @@ Setelah itu, untuk membuktikan Slave berhasil atau tidak, perlu ditambahkan IP G
 echo nameserver 10.77.2.3 > /etc/resolv.conf
 ```
 
+Jika sudah selesai, pengujian dapat dilakukan dengan melakukan ping pada domain yang telah dibuat
+```bash
+ping airdrop.it27.com -c 5
+ping www.redzone.it27.com -c 5
+ping loot.it27.com -c 5
+```
+
 **Result**
+Stop Bind9 Pochinki
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/843e3858-8201-4fe0-a1b9-0a1baf0b8fa4)
+
+Start Bind9 Georgopol
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/82515a9e-b2c2-4556-8bf8-fa0991060f07)
+
+Test Domain airdrop
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/65a8802a-0d78-4cae-b791-ccd892075cde)
+
+Test Domain redzone
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/03ae331b-168f-4e3e-99d8-52b19f649167)
+
+Test Domain loot
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/7f3cfda7-0d7e-4975-8ed5-dfff34655d9b)
 
 
 ## Soal 8
