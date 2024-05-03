@@ -184,6 +184,37 @@ ping google.com -c 5
 
 **Script**
 Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+```bash
+echo 'zone "airdrop.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/airdrop.it27.com";
+        allow-transfer { 192.173.3.5; }; // IP Stalber
+};' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/jarkom
+
+cp /etc/bind/db.local /etc/bind/jarkom/airdrop.it27.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     airdrop.it27.com. root.airdrop.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      airdrop.it27.com.
+@       IN      A       10.77.3.2     ; IP Pochinki
+@       IN      A       10.77.1.3     ; IP Stalber
+www     IN      CNAME   arjuna.a09.com.' > /etc/bind/jarkom/airdrop.it27.com
+
+service bind9 restart
+```
+**Result**
 
 ## Soal 3
 > Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.com yang mengarah ke Severny
