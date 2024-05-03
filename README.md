@@ -34,7 +34,8 @@
 
 ## Topology
 **Topology No. 2**
-![image](https://github.com/Zaar97/arkom-Modul-2-IT27-2024/assets/128958228/007449aa-e092-4718-9105-e5a95d2e80cc)
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/38703ba6-d5ed-4483-bb93-ec49c3f948b9)
+
 
 ## Network Configuration
 - **Router**
@@ -59,7 +60,7 @@
         netmask 255.255.255.0
   ```
 - **Web Server**
-  - Severny
+  - Lipovka
     ```bash
     auto eth0
     iface eth0 inet static
@@ -67,7 +68,7 @@
         netmask 255.255.255.0
         gateway 10.77.1.1
     ```
-  - Lipovka
+  - Stalber
     ```bash
     auto eth0
     iface eth0 inet static
@@ -75,7 +76,7 @@
         netmask 255.255.255.0
         gateway 10.77.1.1
     ```
-    - Stalber
+  - Severny
     ```bash
     auto eth0
     iface eth0 inet static
@@ -88,7 +89,7 @@
     ```bash
     auto eth0
     iface eth0 inet static
- 	    address 10.77.2.2
+ 	    address 10.77.2.5
  	    netmask 255.255.255.0
  	    gateway 10.77.2.1
     ```
@@ -96,7 +97,7 @@
     ```bash
     auto eth0
     iface eth0 inet static
- 	    address 10.77.2.3
+ 	    address 10.77.2.2
  	    netmask 255.255.255.0
  	    gateway 10.77.2.1
     ```
@@ -114,13 +115,13 @@
     ```bash
     auto eth0
     iface eth0 inet static
- 	    address 10.77.2.5
+ 	    address 10.77.2.3
  	    netmask 255.255.255.0
  	    gateway 10.77.2.1
     ```
   - Master Pochinki
     ```bash
-          auto eth0
+    auto eth0
     iface eth0 inet static
  	    address 10.77.3.2
  	    netmask 255.255.255.0
