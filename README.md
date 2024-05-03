@@ -162,8 +162,8 @@
       apt-get install dnsutils -y
       apt-get install lynx -y
 
-      echo nameserver 10.23.1.4 > /etc/resolv.conf
-      echo nameserver 10.23.1.5 >> /etc/resolv.conf
+      echo nameserver 10.77.2.2 > /etc/resolv.conf
+      echo nameserver 10.77.2.5 >> /etc/resolv.conf
   ```
 
 - Nginx Config
@@ -177,7 +177,7 @@
     apt-get install dnsutils -y
     apt-get install lynx -y
     apt-get install nginx -y
-    service nginx start
+    service nginx startc
     apt-get install apache2 -y
     apt-get install libapache2-mod-php7.0 -y
     service apache2 start
@@ -196,7 +196,7 @@
   
 
 ## Soal 1
-Sebelum memulai pengerjaan, langkah awal yang perlu dilakukan adalah melakukan setup. Tahap selanjutnya adalah melakukan pengujian terhadap semua node yang ada. Pada tahap ini, pengujian dilakukan pada kedua client, yakni `Apartment` dan `Ruins`.
+> Sebelum memulai pengerjaan, langkah awal yang perlu dilakukan adalah melakukan setup. Tahap selanjutnya adalah melakukan pengujian terhadap semua node yang ada. Pada tahap ini, pengujian dilakukan pada kedua client, yakni `Apartment` dan `Ruins`.
 
 ### Script
 ```bash
@@ -204,42 +204,67 @@ ping google.com -c 5
 ```
 
 ### Result
-
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/65fb48b5-faa4-4cc6-9b50-2cad72d3c6a8)
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/1846abe1-8157-43f3-a9c5-0262fc83345a)
 
 ## Soal 2
+> Karena para pasukan membutuhkan koordinasi untuk mengambil airdrop, maka buatlah sebuah domain yang mengarah ke Stalber dengan alamat airdrop.xxxx.com dengan alias www.airdrop.xxxx.com dimana xxxx merupakan kode kelompok. Contoh : airdrop.it01.com
 
 ## Soal 3
+> Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.com yang mengarah ke Severny
 
 ## Soal 4
+> Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi persenjataan dan suplai tersebut mengarah ke Mylta dan domain yang ingin digunakan adalah loot.xxxx.com dengan alias www.loot.xxxx.com
 
 ## Soal 5
+> Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Erangel
 
 ## Soal 6
+> Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny
 
 ## Soal 7
+> Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
 
 ## Soal 8
+> Kamu juga diperintahkan untuk membuat subdomain khusus melacak airdrop berisi peralatan medis dengan subdomain medkit.airdrop.xxxx.com yang mengarah ke Lipovka
 
 ## Soal 9
+> Terkadang red zone yang pada umumnya di bombardir artileri akan dijatuhi bom oleh pesawat tempur. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan air raid dan memasukkannya ke domain siren.redzone.xxxx.com dalam folder siren dan pastikan dapat diakses secara mudah dengan menambahkan alias www.siren.redzone.xxxx.com dan mendelegasikan subdomain tersebut ke Georgopol dengan alamat IP menuju radar di Severny
 
 ## Soal 10
+> Markas juga meminta catatan kapan saja pesawat tempur tersebut menjatuhkan bom, maka buatlah subdomain baru di subdomain siren yaitu log.siren.redzone.xxxx.com serta aliasnya www.log.siren.redzone.xxxx.com yang juga mengarah ke Severny
 
 ## Soal 11
+> Setelah pertempuran mereda, warga Erangel dapat kembali mengakses jaringan luar, tetapi hanya warga Pochinki saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga Erangel yang berada diluar Pochinki dapat mengakses jaringan luar melalui DNS Server Pochinki
 
 ## Soal 12
+> Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
 
 ## Soal 13
+> Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
 
 ## Soal 14
+> Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
 
 ## Soal 15
+> Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark dari load balancer dengan 2 web server yang berbeda tersebut dan meminta secara detail dengan ketentuan:
+- Nama Algoritma Load Balancer
+- Report hasil testing apache benchmark 
+- Grafik request per second untuk masing masing algoritma. 
+- Analisis
 
 ## Soal 16
+> Karena dirasa kurang aman karena masih memakai IP markas ingin akses ke mylta memakai mylta.xxx.com dengan alias www.mylta.xxx.com (sesuai web server terbaik hasil analisis kalian)
 
 ## Soal 17
+> Agar aman, buatlah konfigurasi agar mylta.xxx.com hanya dapat diakses melalui port 14000 dan 14400.
 
 ## Soal 18
+> Apa bila ada yang mencoba mengakses IP mylta akan secara otomatis dialihkan ke www.mylta.xxx.com
 
 ## Soal 19
+> Karena probset sudah kehabisan ide masuk ke salah satu worker buatkan akses direktori listing yang mengarah ke resource worker2
 
 ## Soal 20
+> Worker tersebut harus dapat di akses dengan tamat.xxx.com dengan alias www.tamat.xxx.com
+
