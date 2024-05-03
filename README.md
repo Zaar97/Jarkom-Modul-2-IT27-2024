@@ -58,7 +58,7 @@
     iface eth3 inet static
         address 10.77.3.1
         netmask 255.255.255.0
-  ```
+      ```
 - **Web Server**
   - Lipovka
     ```bash
@@ -143,9 +143,60 @@
   ```
 
 ## Prerequisite
+- Router (Erangel)
+  ```bash
+      iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.77.0.0/16
+      echo 'nameserver 192.168.122.1' > /etc/resolv.conf
+  ```
+- Master & Slave
+  ```bash
+      echo 'nameserver 192.168.122.1' > /etc/resolv.conf
+      apt-get update
+      apt-get install bind9 -y   
+  ```
+- Client
+    ```bash
+      echo nameserver 192.168.122.1 > /etc/resolv.conf
+
+      apt-get update -y
+      apt-get install dnsutils -y
+      apt-get install lynx -y
+
+      echo nameserver 10.23.1.4 > /etc/resolv.conf
+      echo nameserver 10.23.1.5 >> /etc/resolv.conf
+  ```
+
+- Nginx Config
+  ```bash
+     apt install nginx php php-fpm -y
+  ```
+
+  - Apache2 Config
+  ```bash
+    apt-get update
+    apt-get install dnsutils -y
+    apt-get install lynx -y
+    apt-get install nginx -y
+    service nginx start
+    apt-get install apache2 -y
+    apt-get install libapache2-mod-php7.0 -y
+    service apache2 start
+    apt-get install wget -y
+    apt-get install unzip -y
+    apt-get install php -y
+    echo -e "\n\nPHP Version:"
+    php -v
+  ```
+
+  - Router (Erangel)
+  ```bash
+      iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.77.0.0/16
+      echo 'nameserver 192.168.122.1' > /etc/resolv.conf
+  ```
+  
 
 ## Soal 1
-Sebelum memulai pengerjaan, langkah awal yang perlu dilakukan adalah melakukan setup. Tahap selanjutnya adalah melakukan pengujian terhadap semua node yang ada. Pada tahap ini, pengujian dilakukan pada kedua client, yakni Apartment dan Ruins.
+Sebelum memulai pengerjaan, langkah awal yang perlu dilakukan adalah melakukan setup. Tahap selanjutnya adalah melakukan pengujian terhadap semua node yang ada. Pada tahap ini, pengujian dilakukan pada kedua client, yakni `Apartment` dan `Ruins`.
 
 ### Script
 ```bash
