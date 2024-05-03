@@ -280,6 +280,47 @@ ping www.redzone.it27.com -c 5
 ## Soal 4
 > Markas pusat meminta dibuatnya domain khusus untuk menaruh informasi persenjataan dan suplai yang tersebar. Informasi persenjataan dan suplai tersebut mengarah ke Mylta dan domain yang ingin digunakan adalah loot.xxxx.com dengan alias www.loot.xxxx.com
 
+**Script**
+Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+***Pochinki***
+```bash
+echo ' "zone "loot.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/loot.it27.com";
+        allow-transfer { 10.77.2.4; }; // IP Mylta
+};' > /etc/bind/named.conf.local
+
+cp /etc/bind/db.local /etc/bind/jarkom/loot.it27.com
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     loot.it27.com. root.loot.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      loot.it27.com.
+@       IN      A       10.77.3.2     ; IP Pochinki
+@       IN      A       10.77.2.4     ; IP Mylta
+www     IN      CNAME   loot.it27.com.' > /etc/bind/jarkom/loot.it27.com
+
+service bind9 restart
+```
+
+***Mylta***
+```bash
+echo nameserver 10.77.3.2 > /etc/resolv.conf
+ping loot.it27.com -c 5
+ping www.loot.it27.com -c 5
+```
+
+**Result**
+
 ## Soal 5
 > Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Erangel
 
