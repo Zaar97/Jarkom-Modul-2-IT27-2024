@@ -165,34 +165,6 @@
       echo nameserver 10.77.2.2 > /etc/resolv.conf
       echo nameserver 10.77.2.5 >> /etc/resolv.conf
   ```
-
-- Nginx Config
-  ```bash
-     apt install nginx php php-fpm -y
-  ```
-
-  - Apache2 Config
-  ```bash
-    apt-get update
-    apt-get install dnsutils -y
-    apt-get install lynx -y
-    apt-get install nginx -y
-    service nginx startc
-    apt-get install apache2 -y
-    apt-get install libapache2-mod-php7.0 -y
-    service apache2 start
-    apt-get install wget -y
-    apt-get install unzip -y
-    apt-get install php -y
-    echo -e "\n\nPHP Version:"
-    php -v
-  ```
-
-  - Router (Erangel)
-  ```bash
-      iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 10.77.0.0/16
-      echo 'nameserver 192.168.122.1' > /etc/resolv.conf
-  ```
   
 
 ## Soal 1
@@ -208,7 +180,10 @@ ping google.com -c 5
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/1846abe1-8157-43f3-a9c5-0262fc83345a)
 
 ## Soal 2
-> Karena para pasukan membutuhkan koordinasi untuk mengambil airdrop, maka buatlah sebuah domain yang mengarah ke Stalber dengan alamat airdrop.xxxx.com dengan alias www.airdrop.xxxx.com dimana xxxx merupakan kode kelompok. Contoh : airdrop.it01.com
+> Karena para pasukan membutuhkan koordinasi untuk mengambil airdrop, maka buatlah sebuah domain yang mengarah ke Stalber dengan alamat airdrop.xxxx.com dengan alias www.airdrop.xxxx.com dimana xxxx merupakan kode kelompok. Kelompok IT27 : airdrop.it27.com
+
+**Script**
+Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
 
 ## Soal 3
 > Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.com yang mengarah ke Severny
