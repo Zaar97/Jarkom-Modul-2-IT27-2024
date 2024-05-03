@@ -319,7 +319,7 @@ ping loot.it27.com -c 5
 ping www.loot.it27.com -c 5
 ```
 
-**Result**
+**Result** <br>
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/534a3b24-c644-4e27-b8e2-b15a9c95da15)
 
 
