@@ -184,6 +184,7 @@ ping google.com -c 5
 
 **Script**
 Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+***Pochinki***
 ```bash
 echo 'zone "airdrop.it27.com" {
         type master;
@@ -214,6 +215,13 @@ www     IN      CNAME   arjuna.a09.com.' > /etc/bind/jarkom/airdrop.it27.com
 
 service bind9 restart
 ```
+***Stelber***
+```bash
+echo nameserver 10.77.3.2 > /etc/resolv.conf
+ping airdrop.it27.com -c 5
+ping www.airdrop.it27.com -c 5
+```
+
 **Result**
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/2e84f8c7-7925-4855-b761-db009ec8c412)
 
