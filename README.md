@@ -413,13 +413,13 @@ Start Bind9 Georgopol
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/82515a9e-b2c2-4556-8bf8-fa0991060f07)
 
 Test Domain airdrop
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/65a8802a-0d78-4cae-b791-ccd892075cde)
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/cee72ded-a032-4bf7-ad96-f875002b80ca)
 
 Test Domain redzone
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/03ae331b-168f-4e3e-99d8-52b19f649167)
 
 Test Domain loot
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/7f3cfda7-0d7e-4975-8ed5-dfff34655d9b)
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/21a66af5-02b2-497e-ab63-74da3d486387)
 
 
 ## Soal 8
@@ -455,8 +455,7 @@ service bind9 restart
 
 **Result**
 Lakukan ping medkit.airdrop.it27.com pada client
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/08e5c2e7-b281-4fc9-a305-e264637f16c6)
-
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/c560953a-2d76-4529-815f-8073d8f740fe)
 
 
 ## Soal 9
