@@ -215,6 +215,8 @@ www     IN      CNAME   arjuna.a09.com.' > /etc/bind/jarkom/airdrop.it27.com
 service bind9 restart
 ```
 **Result**
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/2e84f8c7-7925-4855-b761-db009ec8c412)
+
 
 ## Soal 3
 > Para pasukan juga perlu mengetahui mana titik yang sedang di bombardir artileri, sehingga dibutuhkan domain lain yaitu redzone.xxxx.com dengan alias www.redzone.com yang mengarah ke Severny
