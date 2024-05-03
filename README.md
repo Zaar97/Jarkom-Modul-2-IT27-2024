@@ -185,6 +185,7 @@ ping google.com -c 5
 
 **Script**
 Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+
 ***Pochinki***
 ```bash
 echo 'zone "airdrop.it27.com" {
@@ -212,7 +213,7 @@ $TTL    604800
 @       IN      NS      airdrop.it27.com.
 @       IN      A       10.77.3.2     ; IP Pochinki
 @       IN      A       10.77.1.3     ; IP Stalber
-www     IN      CNAME   arjuna.a09.com.' > /etc/bind/jarkom/airdrop.it27.com
+www     IN      CNAME   airdrop.it27.com.' > /etc/bind/jarkom/airdrop.it27.com
 
 service bind9 restart
 ```
@@ -423,6 +424,40 @@ Test Domain loot
 
 ## Soal 8
 > Kamu juga diperintahkan untuk membuat subdomain khusus melacak airdrop berisi peralatan medis dengan subdomain medkit.airdrop.xxxx.com yang mengarah ke Lipovka
+
+```bash
+echo 'zone "airdrop.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/airdrop.it27.com";
+        allow-transfer { 10.77.1.3; }; // IP Stalber
+};' > /etc/bind/named.conf.local
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     airdrop.it27.com. root.airdrop.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      airdrop.it27.com.
+@       IN      A       10.77.3.2     ; IP Pochinki
+@       IN      A       10.77.1.3     ; IP Stalber
+www     IN      CNAME   airdrop.it27.com.
+medkit  IN      A       10.77.1.2     ; IP Lipovka' > /etc/bind/jarkom/airdrop.it27.com
+
+service bind9 restart
+```
+
+**Result**
+Lakukan ping medkit.airdrop.it27.com pada client
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/08e5c2e7-b281-4fc9-a305-e264637f16c6)
+
+
 
 ## Soal 9
 > Terkadang red zone yang pada umumnya di bombardir artileri akan dijatuhi bom oleh pesawat tempur. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan air raid dan memasukkannya ke domain siren.redzone.xxxx.com dalam folder siren dan pastikan dapat diakses secara mudah dengan menambahkan alias www.siren.redzone.xxxx.com dan mendelegasikan subdomain tersebut ke Georgopol dengan alamat IP menuju radar di Severny
