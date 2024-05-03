@@ -325,6 +325,12 @@ ping www.loot.it27.com -c 5
 
 ## Soal 5
 > Pastikan domain-domain tersebut dapat diakses oleh seluruh komputer (client) yang berada di Erangel
+Dapat dilakukakn dengan melakukan ping untuk setiap domain yang telah di buat sebelumnya pada console Erangel
+
+**Result** 
+![Screenshot 2024-05-03 153259](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/65c9592f-f963-461b-bcdd-cbc677a3bc8d)
+
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/c561f2e1-85ce-4d5f-98fb-29bbc72d8a27)
 
 ## Soal 6
 > Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny
