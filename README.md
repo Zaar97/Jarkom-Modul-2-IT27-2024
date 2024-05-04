@@ -337,6 +337,41 @@ Dapat dilakukakn dengan melakukan ping untuk setiap domain yang telah di buat se
 ## Soal 6
 > Beberapa daerah memiliki keterbatasan yang menyebabkan hanya dapat mengakses domain secara langsung melalui alamat IP domain tersebut. Karena daerah tersebut tidak diketahui secara spesifik, pastikan semua komputer (client) dapat mengakses domain redzone.xxxx.com melalui alamat IP Severny
 
+**Script**
+Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
+***Pochinki***
+```bash
+echo 'zone "redzone.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/redzone.it27.com";
+        
+zone "1.77.10.in-addr.arpa"   {
+        type master;
+        file "/etc/bind/jarkom/1.77.10.in-addr.arpa";
+        };' > /etc/bind/named.conf.local
+
+mkdir /etc/bind/jarkom
+
+cp /etc/bind/db.local /etc/bind/jarkom/1.77.10.in-addr.arpa
+
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     redzone.it27.com. root.redzone.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+1.77.10.in-addr.arpa       IN      NS      redzone.it27.com.
+4                          IN      PTR     redzone.it27.com.' > /etc/bind/jarkom/1.77.10.in-addr.arpa
+
+service bind9 restart
+### Result
+```
 ## Soal 7
 > Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
 
