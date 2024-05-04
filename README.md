@@ -370,8 +370,9 @@ $TTL    604800
 4                          IN      PTR     redzone.it27.com.' > /etc/bind/jarkom/1.77.10.in-addr.arpa
 
 service bind9 restart
-### Result
 ```
+**Result**
+
 ## Soal 7
 > Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
 
