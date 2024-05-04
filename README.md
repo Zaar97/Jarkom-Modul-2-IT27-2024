@@ -371,7 +371,9 @@ $TTL    604800
 
 service bind9 restart
 ```
-**Result**
+**Result**<br>
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/49ad6745-863f-4184-bd92-7233e47b4fd5)
+
 
 ## Soal 7
 > Akhir-akhir ini seringkali terjadi serangan siber ke DNS Server Utama, sebagai tindakan antisipasi kamu diperintahkan untuk membuat DNS Slave di Georgopol untuk semua domain yang sudah dibuat sebelumnya
