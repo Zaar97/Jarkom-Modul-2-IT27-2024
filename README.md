@@ -507,7 +507,7 @@ Pada `DNS Slave` Kita perlu untuk mengarahkan zone ke `DNS Master` agar authorit
 ```bash
 echo 'zone "siren.redzone.it27.com"{
         type master;
-        file "/etc/bind/Baratayuda/siren.redzone.it27.com";
+        file "/etc/bind/siren/siren.redzone.it27.com";
 };'> /etc/bind/named.conf.local
 
 mkdir -p /etc/bind/siren
