@@ -461,6 +461,84 @@ Lakukan ping medkit.airdrop.it27.com pada client
 ## Soal 9
 > Terkadang red zone yang pada umumnya di bombardir artileri akan dijatuhi bom oleh pesawat tempur. Untuk melindungi warga, kita diperlukan untuk membuat sistem peringatan air raid dan memasukkannya ke domain siren.redzone.xxxx.com dalam folder siren dan pastikan dapat diakses secara mudah dengan menambahkan alias www.siren.redzone.xxxx.com dan mendelegasikan subdomain tersebut ke Georgopol dengan alamat IP menuju radar di Severny
 
+**Script**
+
+***Pochinki***
+Pada DNS Master kita perlu menambahkan ns1     IN      A       10.77.2.3     ; IP Georgopol agar mendapatkan authoritative terhadap Georgopol. Kita juga perlu mengaktifkan allow-query { any; }; pada DNS Master
+```bash
+echo '
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     redzone.it27.com. root.redzone.it27.com. (
+                        2023101001      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      redzone.it27.com.
+@       IN      A       10.77.3.2     ; IP Pochinki
+@       IN      A       10.77.1.4     ; IP Severny
+www     IN      CNAME   redzone.it27.com.
+ns1     IN      A       10.77.2.3     ; IP Georgopol
+siren   IN      NS      ns1
+@               IN      AAAA    ::1' > /etc/bind/jarkom/redzone.it27.com
+
+echo '
+options {
+        directory "var/cache/bind";
+        //dnssec-validation auto;
+
+        allow-query{any;};
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};
+' > /etc/bind/named.conf.options
+
+service bind9 restart
+```
+
+***Georgopol***
+
+Pada `DNS Slave` Kita perlu untuk mengarahkan zone ke `DNS Master` agar authoritative tadi dapat jalan. Kita juga perlu mengaktifkan `allow-query { any; };` pada DNS Slave
+
+```bash
+echo 'zone "siren.redzone.it27.com"{
+        type master;
+        file "/etc/bind/Baratayuda/siren.redzone.it27.com";
+};'> /etc/bind/named.conf.local
+
+mkdir -p /etc/bind/siren
+cp /etc/bind/db.local /etc/bind/siren/siren.redzone.it27.com
+
+echo '
+$TTL    604800
+@       IN      SOA     siren.redzone.it27.com. root.siren.redzone.it27.com. (
+                        2023101101      ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604800 )        ; Negative Cache TTL
+;
+@               IN      NS      siren.redzone.it27.com.
+@               IN      A       10.77.1.4       ; IP Severny
+www             IN      CNAME   siren.redzone.it27.com.
+' > /etc/bind/siren/siren.redzone.it27.com
+
+echo '
+options {
+        directory "var/cache/bind";
+        //dnssec-validation auto;
+        allow-query{any;};
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};
+' > /etc/bind/named.conf.options
+
+service bind9 restart
+```
 ## Soal 10
 > Markas juga meminta catatan kapan saja pesawat tempur tersebut menjatuhkan bom, maka buatlah subdomain baru di subdomain siren yaitu log.siren.redzone.xxxx.com serta aliasnya www.log.siren.redzone.xxxx.com yang juga mengarah ke Severny
 
