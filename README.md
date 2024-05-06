@@ -162,7 +162,7 @@
       apt-get install dnsutils -y
       apt-get install lynx -y
 
-      echo nameserver 10.77.2.2 > /etc/resolv.conf
+      echo nameserver 10.77.3.2 > /etc/resolv.conf
       echo nameserver 10.77.2.5 >> /etc/resolv.conf
   ```
   
