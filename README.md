@@ -20,17 +20,7 @@
 - [Soal 7](#soal-7)
 - [Soal 8](#soal-8)
 - [Soal 9](#soal-9)
-- [Soal 10](#soal-10)
-- [Soal 11](#soal-11)
-- [Soal 12](#soal-12)
-- [Soal 13](#soal-13)
-- [Soal 14](#soal-14)
-- [Soal 15](#soal-15)
-- [Soal 16](#soal-16)
-- [Soal 17](#soal-17)
-- [Soal 18](#soal-18)
-- [Soal 19](#soal-19)
-- [Soal 20](#soal-20)
+
 
 ## Topology
 **Topology No. 2**
@@ -577,40 +567,3 @@ options {
 
 service bind9 restart
 ```
-## Soal 10
-> Markas juga meminta catatan kapan saja pesawat tempur tersebut menjatuhkan bom, maka buatlah subdomain baru di subdomain siren yaitu log.siren.redzone.xxxx.com serta aliasnya www.log.siren.redzone.xxxx.com yang juga mengarah ke Severny
-
-## Soal 11
-> Setelah pertempuran mereda, warga Erangel dapat kembali mengakses jaringan luar, tetapi hanya warga Pochinki saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga Erangel yang berada diluar Pochinki dapat mengakses jaringan luar melalui DNS Server Pochinki
-
-## Soal 12
-> Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
-
-## Soal 13
-> Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
-
-## Soal 14
-> Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
-
-## Soal 15
-> Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark dari load balancer dengan 2 web server yang berbeda tersebut dan meminta secara detail dengan ketentuan:
-- Nama Algoritma Load Balancer
-- Report hasil testing apache benchmark 
-- Grafik request per second untuk masing masing algoritma. 
-- Analisis
-
-## Soal 16
-> Karena dirasa kurang aman karena masih memakai IP markas ingin akses ke mylta memakai mylta.xxx.com dengan alias www.mylta.xxx.com (sesuai web server terbaik hasil analisis kalian)
-
-## Soal 17
-> Agar aman, buatlah konfigurasi agar mylta.xxx.com hanya dapat diakses melalui port 14000 dan 14400.
-
-## Soal 18
-> Apa bila ada yang mencoba mengakses IP mylta akan secara otomatis dialihkan ke www.mylta.xxx.com
-
-## Soal 19
-> Karena probset sudah kehabisan ide masuk ke salah satu worker buatkan akses direktori listing yang mengarah ke resource worker2
-
-## Soal 20
-> Worker tersebut harus dapat di akses dengan tamat.xxx.com dengan alias www.tamat.xxx.com
-
