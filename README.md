@@ -457,8 +457,9 @@ Stop Bind9 Pochinki
 Start Bind9 Georgopol
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/82515a9e-b2c2-4556-8bf8-fa0991060f07)
 
-Test Domain airdrop
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/cee72ded-a032-4bf7-ad96-f875002b80ca)
+Test Domain airdrop<br>
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/12ac679e-ef0a-4689-84c5-30c5dc40c5ed)
+
 
 Test Domain redzone<br>
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/07d90b9c-21f8-41bb-9ddd-b11aefb38298)
