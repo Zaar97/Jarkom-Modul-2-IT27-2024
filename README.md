@@ -611,6 +611,22 @@ service bind9 restart
 ## Soal 11
 > Setelah pertempuran mereda, warga Erangel dapat kembali mengakses jaringan luar, tetapi hanya warga Pochinki saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga Erangel yang berada diluar Pochinki dapat mengakses jaringan luar melalui DNS Server Pochinki
 
+**Pochinki**
+```bash 
+options {
+        directory "/var/cache/bind";
+
+        forwarders {
+            192.168.122.1
+        }
+
+        allow-query{any;};
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};
+```
+
 ## Soal 12
 > Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
 
@@ -679,13 +695,6 @@ a2enmod lbmethod_bytraffic
 
 ## Soal 14
 > Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
-
-## Soal 15
-> Markas pusat meminta laporan hasil benchmark dengan menggunakan apache benchmark dari load balancer dengan 2 web server yang berbeda tersebut dan meminta secara detail dengan ketentuan:
-- Nama Algoritma Load Balancer
-- Report hasil testing apache benchmark 
-- Grafik request per second untuk masing masing algoritma. 
-- Analisis
 
 ## Soal 16
 > Karena dirasa kurang aman karena masih memakai IP markas ingin akses ke mylta memakai mylta.xxx.com dengan alias www.mylta.xxx.com (sesuai web server terbaik hasil analisis kalian)
