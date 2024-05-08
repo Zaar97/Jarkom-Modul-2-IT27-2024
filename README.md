@@ -650,6 +650,7 @@ a2ensite default-8080.conf
 ## Soal 13
 > Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
 
+**Mylta**
 - Aktifkan modul yang diperlukan, jangan lupa restart service apache dengan command `service apache2 restart`
 ```
 a2enmod proxy
