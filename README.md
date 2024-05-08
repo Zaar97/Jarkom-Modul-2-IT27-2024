@@ -650,6 +650,32 @@ a2ensite default-8080.conf
 ## Soal 13
 > Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
 
+- Aktifkan modul yang diperlukan, jangan lupa restart service apache dengan command `service apache2 restart`
+```
+a2enmod proxy
+a2enmod proxy_http
+a2enmod proxy_balancer
+a2enmod lbmethod_bytraffic
+```
+- Tambahkan konfigurasi berikut pada file /etc/apache2/sites-available/default-8080.conf
+```
+<VirtualHost *:8080>
+        <proxy balancer://itbalancer>
+                BalancerMember http://10.76.2.2:8080
+                BalancerMember http://10.76.2.3:8080
+                BalancerMember http://10.76.2.5:8080
+                ProxySet lbmethod=bytraffic
+        </proxy>
+        ProxyPreserveHost On
+        ProxyPass / balancer://itbalancer/
+        ProxyPassReverse / balancer://itbalancer/
+</VirtualHost>
+```
+- Restart lagi server apache
+
+- Result <br>
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/f940182a-7192-4487-8bd4-435be580f558)
+
 ## Soal 14
 > Mereka juga belum merasa puas jadi pusat meminta agar web servernya dan load balancer nya diubah menjadi nginx
 
