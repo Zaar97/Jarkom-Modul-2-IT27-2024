@@ -320,7 +320,7 @@ ping www.loot.it27.com -c 5
 ```
 
 **Result** <br>
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/534a3b24-c644-4e27-b8e2-b15a9c95da15)
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/9b6b8f9b-c453-44f2-ba6f-05be29f7fe73)
 
 
 ## Soal 5
@@ -370,7 +370,10 @@ $TTL    604800
 service bind9 restart
 ```
 **Result**<br>
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/49ad6745-863f-4184-bd92-7233e47b4fd5)
+#### Ruins
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/83256982-05d6-47fa-ba6a-fee0e54cc025)
+#### Apartments
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/3c9845e6-6f48-4f3a-84e2-11b38d9bc79f)
 
 
 ## Soal 7
