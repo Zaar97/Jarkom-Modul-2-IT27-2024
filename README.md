@@ -460,8 +460,9 @@ Start Bind9 Georgopol
 Test Domain airdrop
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/cee72ded-a032-4bf7-ad96-f875002b80ca)
 
-Test Domain redzone
-![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/03ae331b-168f-4e3e-99d8-52b19f649167)
+Test Domain redzone<br>
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/07d90b9c-21f8-41bb-9ddd-b11aefb38298)
+
 
 Test Domain loot
 ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/128958228/21a66af5-02b2-497e-ab63-74da3d486387)
