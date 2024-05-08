@@ -527,18 +527,16 @@ $TTL    604800
 ;
 @       IN      NS      redzone.it27.com.
 @       IN      A       10.77.3.2     ; IP Pochinki
-@       IN      A       10.77.1.4     ; IP Severny
 www     IN      CNAME   redzone.it27.com.
 ns1     IN      A       10.77.2.3     ; IP Georgopol
-siren   IN      NS      ns1
-@               IN      AAAA    ::1' > /etc/bind/jarkom/redzone.it27.com
+siren   IN      NS      ns1' > /etc/bind/jarkom/redzone.it27.com
 
 echo '
 options {
-        directory "var/cache/bind";
+        directory \"/var/cache/bind\";
         //dnssec-validation auto;
 
-        allow-query{any;};
+        allow-query { any; };
         auth-nxdomain no;    # conform to RFC1035
         listen-on-v6 { any; };
 };
@@ -552,15 +550,23 @@ service bind9 restart
 Pada `DNS Slave` Kita perlu untuk mengarahkan zone ke `DNS Master` agar authoritative tadi dapat jalan. Kita juga perlu mengaktifkan `allow-query { any; };` pada DNS Slave
 
 ```bash
+echo "
+options {
+        directory \"/var/cache/bind\";
+        allow-query{any;};
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};
+" > /etc/bind/named.conf.options
+
 echo 'zone "siren.redzone.it27.com"{
         type master;
         file "/etc/bind/siren/siren.redzone.it27.com";
-};'> /etc/bind/named.conf.local
+};'>> /etc/bind/named.conf.local
 
 mkdir -p /etc/bind/siren
-cp /etc/bind/db.local /etc/bind/siren/siren.redzone.it27.com
 
-echo '
+echo "
 $TTL    604800
 @       IN      SOA     siren.redzone.it27.com. root.siren.redzone.it27.com. (
                         2023101101      ; Serial
@@ -572,23 +578,36 @@ $TTL    604800
 @               IN      NS      siren.redzone.it27.com.
 @               IN      A       10.77.1.4       ; IP Severny
 www             IN      CNAME   siren.redzone.it27.com.
-' > /etc/bind/siren/siren.redzone.it27.com
-
-echo '
-options {
-        directory "var/cache/bind";
-        //dnssec-validation auto;
-        allow-query{any;};
-        auth-nxdomain no;    # conform to RFC1035
-        listen-on-v6 { any; };
-};
-' > /etc/bind/named.conf.options
+" > /etc/bind/siren/siren.redzone.it27.com
 
 service bind9 restart
 ```
+
 ## Soal 10
 > Markas juga meminta catatan kapan saja pesawat tempur tersebut menjatuhkan bom, maka buatlah subdomain baru di subdomain siren yaitu log.siren.redzone.xxxx.com serta aliasnya www.log.siren.redzone.xxxx.com yang juga mengarah ke Severny
 
+**Script**
+
+***GEorgopol***
+```bash
+echo "
+$TTL    604800
+@       IN      SOA     siren.redzone.it27.com. root.siren.redzone.it27.com. (
+                        2023101101      ; Serial
+                        604800          ; Refresh
+                        86400           ; Retry
+                        2419200         ; Expire
+                        604800 )        ; Negative Cache TTL
+;
+@               IN      NS      siren.redzone.it27.com.
+@               IN      A       10.77.1.4       ; IP Severny
+www             IN      CNAME   siren.redzone.it27.com.
+log             IN      A       10.77.1.4      ;
+www.log         IN      CNAME   log.siren.redzone.IT17.com.
+" > /etc/bind/siren/siren.redzone.it27.com
+
+service bind9 restart
+```
 ## Soal 11
 > Setelah pertempuran mereda, warga Erangel dapat kembali mengakses jaringan luar, tetapi hanya warga Pochinki saja yang dapat mengakses jaringan luar secara langsung. Buatlah konfigurasi agar warga Erangel yang berada diluar Pochinki dapat mengakses jaringan luar melalui DNS Server Pochinki
 
