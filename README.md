@@ -284,7 +284,13 @@ ping www.redzone.it27.com -c 5
 Pada node DNS Master, kita perlu melakukan setup terlebih dahulu sebagai berikut
 ***Pochinki***
 ```bash
-echo ' "zone "loot.it27.com" {
+echo 'zone "airdrop.it27.com" {
+        type master;
+        file "/etc/bind/jarkom/airdrop.it27.com";
+        allow-transfer { 10.77.1.3; }; // IP Stalber
+};
+
+zone "loot.it27.com" {
         type master;
         file "/etc/bind/jarkom/loot.it27.com";
         allow-transfer { 10.77.2.4; }; // IP Mylta
