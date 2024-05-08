@@ -595,6 +595,39 @@ service bind9 restart
 ## Soal 12
 > Karena pusat ingin sebuah website yang ingin digunakan untuk memantau kondisi markas lainnya maka deploy lah webiste ini (cek resource yg lb) pada severny menggunakan apache
 
+- Install Dependencies
+```
+apt-get update
+apt-get install lynx
+apt-get install apache2
+apt-get install php
+apt-get install libapache2-mod-php7.0
+```
+- Buat konfigurasi baru dengan mengcopy  /etc/apache2/sites-available/000-default.conf
+```
+cp 000-default.conf default-8080.conf
+```
+- Ganti port menjadi 8080
+```
+<VirtualHost *:8080>
+```
+- Tambahkan ke /etc/apache2/ports.conf
+```
+Listen 8080
+```
+- Aktifkan konfigurasi
+```
+a2ensite default-8080.conf
+```
+- Restart Apache Service
+- Buat index.php dalam /var/www/html/
+- Jalankan lynx http://10.77.1.4:8080 <br>
+  ![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/093fd60e-e77d-4725-9486-27e895a947fd)
+
+- RESULT <br>
+![image](https://github.com/Zaar97/Jarkom-Modul-2-IT27-2024/assets/136430870/616260cd-1a64-4772-8b09-f8e2382cd9f1)
+
+
 ## Soal 13
 > Tapi pusat merasa tidak puas dengan performanya karena traffic yag tinggi maka pusat meminta kita memasang load balancer pada web nya, dengan Severny, Stalber, Lipovka sebagai worker dan Mylta sebagai Load Balancer menggunakan apache sebagai web server nya dan load balancernya
 
